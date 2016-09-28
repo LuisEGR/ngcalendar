@@ -22,9 +22,11 @@ if(typeof(window.dhx)=="undefined"){window.dhx=window.dhx4={version:"5.0",skin:n
                     if (element[0].id.trim() === '') {
                         element[0].id = 'element-' + scope.$id;
                     }
-                    
                     var myCalendar = new dhtmlXCalendarObject({button: element[0].id});
-                    
+                    var d = new Date();
+                    if(attrs.future){
+                      myCalendar.setSensitiveRange(d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2), null);
+                    }
                     if (attrs.format) {
                         myCalendar.setDateFormat(attrs.format);
                         
